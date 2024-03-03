@@ -1,0 +1,18 @@
+
+.category-item {
+    width: 200px;
+    height: 200px;
+    background-image: url(../../../assets/image/transparent_black_background.png);
+    background-size: cover;
+    background-position: center;
+    border: solid 3px var(--black);
+    font-size: 24px;
+    font-family: primaryFont, sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.category-item:hover {
+    transition: all 0.2s;
+    background-image: url(../../../assets/image/gradient_background.png);
+}

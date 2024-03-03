@@ -1,0 +1,25 @@
+
+.back-button {
+    background: none;
+    border: none;
+    background-image: url(../../../assets/image/back_arrow_1.png);
+    background-position: left;
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-left: 70px;
+    height: 10%;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    transition: all 0.3s;
+    font-size: 32px;
+    color: transparent;
+    font-family: primaryFont, sans-serif;
+}
+
+.back-button:hover {
+    transition: all 0.3s;
+    cursor: pointer;
+    color: var(--black);
+    background-image: url(../../../assets/image/back_arrow_2.png);
+}

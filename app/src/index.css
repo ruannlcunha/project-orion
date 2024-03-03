@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=PT+Serif&family=Playfair+Display&family=Roboto+Slab&display=swap');
+@font-face {
+  font-family: primaryFont;
+  src: url(./assets/font/KHMenu.otf);
+}
+
+:root {
+  --black: #000000;
+  --grey: #494949;
+  --white: #ffffff;
+  --black-transparent: #00000041;
+  --yellow-transparent: #fdff7698;
+  --primary: #fdff76;
+  --secundary: #fbff00;
+  --terciary: #5598f0;
+  --background: #f0f0f0;
+}
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image: url(./assets/image/white_screen.png);
+    font-family: primaryFont, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--black);
+}
+
+div .white-screen {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  animation: fade-in 4s;
+}
+
+@keyframes fade-out {
+  from {opacity: 100%;}
+  to {opacity: 0%;}
+}
+
+@keyframes fade-in {
+  from {opacity: 0%;}
+  to {opacity: 100%;}
+}
