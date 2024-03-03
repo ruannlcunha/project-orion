@@ -9,10 +9,7 @@ export function useForm(initialFormData) {
     const fieldName = target.name;
     setFormData((pastInfo) => ({
       ...pastInfo,
-      [fieldName]: {
-        value: fieldValue,
-        error: fieldValue ? "" : errorMessage,
-      },
+      [fieldName]: fieldValue,
     }));
   }
 

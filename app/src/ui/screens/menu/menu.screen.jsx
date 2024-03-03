@@ -2,19 +2,16 @@ import "./menu.style.css"
 import { ButtonPrimary, ContainerScreen } from "../../components"
 import { useSound } from "../../../hook"
 import { useNavigate } from "react-router-dom";
+import { useLogout } from "../../../hook/api/auth/use-logout.hook";
 
 export function MenuScreen() {
+    const { logout } = useLogout();
     const { playClick } = useSound();
     const navigate = useNavigate();
 
     function handleLibrary() {
         playClick()
         navigate("/library/campaign")
-    }
-
-    function handleExit() {
-        playClick()
-        navigate("/")
     }
 
     return (
@@ -28,7 +25,7 @@ export function MenuScreen() {
                         <ButtonPrimary onClick={playClick}>Jogar</ButtonPrimary>
                         <ButtonPrimary onClick={handleLibrary}>Biblioteca</ButtonPrimary>
                         <ButtonPrimary onClick={playClick}>Configurações</ButtonPrimary>
-                        <ButtonPrimary onClick={handleExit}>Sair</ButtonPrimary>
+                        <ButtonPrimary onClick={logout}>Sair</ButtonPrimary>
                     </section>
                 </section>
             </div>

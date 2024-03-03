@@ -1,21 +1,19 @@
 import { toast } from 'react-toastify';
 import useGlobalUser from "../../context/global-user.context";
-import useGlobalAdm from "../../context/global-adm.context"
 
 export function useToast() {
     const [,setUser] = useGlobalUser();
-    const [,setGlobalAdm] = useGlobalAdm();
 
     function toastSuccess(message) {
         toast.success(message , {
             position: "top-right",
-            autoClose: 5000,
+            autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-            theme: "dark",
+            theme: "light",
             });
     }
 
@@ -25,13 +23,13 @@ export function useToast() {
 
         toast.warn(errorMessage , {
             position: "top-right",
-            autoClose: 5000,
+            autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-            theme: "dark",
+            theme: "light",
             });
     }
 
@@ -39,13 +37,13 @@ export function useToast() {
         if(error.response.data) {
             toast.error(error.response.data.message , {
                 position: "top-right",
-                autoClose: 5000,
+                autoClose: 3000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-                theme: "dark",
+                theme: "light",
                 });
 
             return 
@@ -53,16 +51,15 @@ export function useToast() {
         else {
             toast.error("Ocorreu um erro." , {
                 position: "top-right",
-                autoClose: 5000,
+                autoClose: 3000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-                theme: "dark",
+                theme: "light",
                 });
             setUser(null)
-            setGlobalAdm(null)
         }
         
     }

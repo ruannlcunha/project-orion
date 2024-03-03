@@ -3,22 +3,28 @@ import "./login.style.css"
 import orion from "../../../assets/image/orion_1.png"
 import { useNavigate } from "react-router-dom";
 import whiteScreen from "../../../assets/image/white_screen.png"
-import { useForm, useSound } from "../../../hook";
+import { useForm, useLogin, useSound } from "../../../hook";
 import { useState } from "react";
 
 export function LoginScreen() {
     const navigate = useNavigate();
     const [submited, setSubmited] = useState(false);
-    const { playLogin } = useSound();
+    const { login } = useLogin()
     const {formData, handleChange} = useForm({
-        email: {value: "", error: ""},
-        senha: {value: "", error: ""}});
+        email: "",
+        password: ""});
     
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault()
-        playLogin()
-        setSubmited(true)
-        setTimeout(()=>{navigate("/menu")}, 4000 )
+        const loginSuccessful = await login({
+            email: formData.email,
+            password: formData.password
+        })
+        
+        if(loginSuccessful) {
+            setSubmited(true)
+            setTimeout(()=>{navigate("/menu")}, 4000 )
+        }
     }
 
     return (
@@ -32,15 +38,15 @@ export function LoginScreen() {
                         <Input 
                         label={"Email"}
                         name={"email"}
-                        value={formData.email.value}
+                        value={formData.email}
                         type={"text"}
                         onChange={handleChange}
                         placeholder={"Digite seu email."}
                         />
                         <Input 
                         label={"Senha"}
-                        name={"senha"}
-                        value={formData.senha.value}
+                        name={"password"}
+                        value={formData.password}
                         type={"password"}
                         onChange={handleChange}
                         placeholder={"Digite sua senha."}
