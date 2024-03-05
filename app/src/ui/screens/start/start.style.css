@@ -44,10 +44,11 @@ div .title-orion img {
     filter: brightness(200%);
 }
 
-.start-screen label {
+.start-screen button {
     font-size: 36px;
-    margin-top: 80px;
+    margin-top: 20px;
     font-family: primaryFont, sans-serif;
+    border: none;
     border-top: solid 2px var(--white);
     border-bottom: solid 2px var(--white);
     padding: 0 10px;
@@ -55,12 +56,11 @@ div .title-orion img {
     filter: drop-shadow(-2px 5px 5px var(--black));
     text-shadow: 3px 3px 35px var(--black);
     color: var(--white);
-    background-image: url(../../../assets/image/transparent_background.png);
-    background-size: cover;
+    background: none;
     transition: all 0.1s;
 }
 
-.start-screen label:hover {
+.start-screen button:hover {
     color: var(--primary);
     filter: drop-shadow(-2px 2px 3px var(--primary));
     transition: all 0.1s;

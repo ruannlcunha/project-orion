@@ -15,10 +15,10 @@ public class ConteudoRequest {
     private String titulo;
 
     @NotNull
-    private Long bibliotecaId;
+    private Long campanhaId;
 
-    @NotBlank
-    private String categoria;
+    @NotNull
+    private Long categoriaId;
 
     private String[] imagens;
 

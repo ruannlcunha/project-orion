@@ -1,7 +1,7 @@
 package com.project_orion.api.service.core;
 
-import com.project_orion.api.domain.Biblioteca;
-import com.project_orion.api.repository.BibliotecaRepository;
+import com.project_orion.api.domain.Campanha;
+import com.project_orion.api.repository.CampanhaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -10,13 +10,13 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 
 @Service
-public class BuscarBibliotecaService {
+public class BuscarCampanhaService {
 
     @Autowired
-    private BibliotecaRepository bibliotecaRepository;
+    private CampanhaRepository campanhaRepository;
 
-    public Biblioteca porId(Long id) {
-        return bibliotecaRepository.findByIdAndAtivo(id, true)
+    public Campanha porId(Long id) {
+        return campanhaRepository.findByIdAndAtivo(id, true)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Biblioteca não existe"));
     }
 

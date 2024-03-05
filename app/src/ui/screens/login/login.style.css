@@ -56,10 +56,19 @@
     justify-content: center;
     width: 90%;
     height: 200px;
-    background-image: url(../../../assets/img/entrada_botao.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+.login-fundo section form label span {
+    color: var(--grey);
+    transition: all 0.3s;
+}
+.login-fundo section form label span:hover {
+    color: var(--terciary);
+    cursor: pointer;
+    transition: all 0.3s;
 }
 
 .login-fundo section form div label {

@@ -1,9 +1,9 @@
 import { ButtonPrimary, ContainerScreen, Input, BackButton } from "../../components"
 import "./login.style.css"
+import whiteScreen from "../../../assets/image/white_screen.png"
 import orion from "../../../assets/image/orion_1.png"
 import { useNavigate } from "react-router-dom";
-import whiteScreen from "../../../assets/image/white_screen.png"
-import { useForm, useLogin, useSound } from "../../../hook";
+import { useForm, useLogin } from "../../../hook";
 import { useState } from "react";
 
 export function LoginScreen() {
@@ -51,6 +51,8 @@ export function LoginScreen() {
                         onChange={handleChange}
                         placeholder={"Digite sua senha."}
                         />
+                        <label>Não tem cadastro? <span onClick={()=>navigate("/register")}>Clique aqui</span>
+                        </label>
                         <ButtonPrimary>Entrar</ButtonPrimary>
                     </form>
                 </section>

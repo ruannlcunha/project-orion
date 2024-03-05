@@ -1,9 +1,10 @@
 DROP TABLE IF EXISTS permissao CASCADE;
-DROP TABLE IF EXISTS conteudo_campanha CASCADE;
-DROP TABLE IF EXISTS campanha CASCADE;
+DROP TABLE IF EXISTS usuario_campanha CASCADE;
 DROP TABLE IF EXISTS secao CASCADE;
+DROP TABLE IF EXISTS imagem CASCADE;
 DROP TABLE IF EXISTS conteudo CASCADE;
-DROP TABLE IF EXISTS biblioteca CASCADE;
+DROP TABLE IF EXISTS categoria CASCADE;
+DROP TABLE IF EXISTS campanha CASCADE;
 DROP TABLE IF EXISTS usuario CASCADE;
 
 CREATE TABLE usuario (
@@ -22,19 +23,42 @@ CREATE TABLE permissao (
     CONSTRAINT uk_permissao UNIQUE(funcao,usuario_id)
 );
 
-CREATE TABLE biblioteca (
+CREATE TABLE campanha (
 	id BIGINT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    imagem_fundo VARCHAR(800) NOT NULL,
+	usuario_id BIGINT NOT NULL,
+    imagem_icone VARCHAR(800) NOT NULL,
+	ativo BOOLEAN NOT NULL DEFAULT(true)
+);
+
+CREATE TABLE usuario_campanha (
+	id BIGINT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+	usuario_id BIGINT NOT NULL,
+	campanha_id BIGINT NOT NULL,
+    cargo VARCHAR(24) NOT NULL,
 	ativo BOOLEAN NOT NULL DEFAULT(true),
-    titulo VARCHAR(128) NOT NULL
+    CONSTRAINT ck_usuario_campanha CHECK (cargo IN('MESTRE','JOGADOR', 'ESPECTADOR')),
+    CONSTRAINT fk_usuario_campanha_usuario FOREIGN KEY (usuario_id) REFERENCES usuario(id),
+    CONSTRAINT fk_usuario_campanha_campanha FOREIGN KEY (campanha_id) REFERENCES campanha(id)
+);
+
+CREATE TABLE categoria (
+	id BIGINT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    nome VARCHAR(128) NOT NULL,
+	campanha_id BIGINT NOT NULL,
+	ativo BOOLEAN NOT NULL DEFAULT(true),
+    CONSTRAINT fk_categoria_campanha FOREIGN KEY (campanha_id) REFERENCES campanha(id)
 );
 
 CREATE TABLE conteudo (
 	id BIGINT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     titulo VARCHAR(128) NOT NULL,
-	biblioteca_id BIGINT NOT NULL,
-    categoria VARCHAR(128) NOT NULL,
+	campanha_id BIGINT NOT NULL,
+	categoria_id BIGINT NOT NULL,
 	ativo BOOLEAN NOT NULL DEFAULT(true),
-    CONSTRAINT fk_conteudo_biblioteca FOREIGN KEY (biblioteca_id) REFERENCES biblioteca(id)
+    CONSTRAINT fk_conteudo_categoria FOREIGN KEY (categoria_id) REFERENCES categoria(id),
+    CONSTRAINT fk_conteudo_campanha FOREIGN KEY (campanha_id) REFERENCES campanha(id)
 );
 
 CREATE TABLE imagem (
@@ -51,19 +75,4 @@ CREATE TABLE secao (
 	conteudo_id BIGINT NOT NULL,
 	ativo BOOLEAN NOT NULL DEFAULT(true),
     CONSTRAINT fk_secao_conteudo FOREIGN KEY (conteudo_id) REFERENCES conteudo(id)
-);
-
-CREATE TABLE campanha (
-	id BIGINT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    titulo VARCHAR(255) NOT NULL
-);
-
-CREATE TABLE conteudo_campanha (
-	id BIGINT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-	conteudo_id BIGINT NOT NULL,
-	campanha_id BIGINT NOT NULL,
-	ativo BOOLEAN NOT NULL DEFAULT(true),
-    CONSTRAINT uk_conteudo_campanha UNIQUE (conteudo_id, campanha_id),
-    CONSTRAINT fk_conteudo_campanha_conteudo FOREIGN KEY (conteudo_id) REFERENCES conteudo(id),
-	CONSTRAINT fk_conteudo_campanha_campanha FOREIGN KEY (campanha_id) REFERENCES campanha(id)
 );

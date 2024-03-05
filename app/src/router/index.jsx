@@ -1,5 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
-import { StartScreen, LoginScreen, MenuScreen, CampaignScreen, CategoryScreen, ContentListScreen, NotFoundScreen, ContentDetailsScreen } from "../ui/screens";
+import { 
+  StartScreen,
+  LoginScreen,
+  MenuScreen,
+  CampaignScreen,
+  CategoryScreen,
+  ContentListScreen,
+  NotFoundScreen,
+  ContentDetailsScreen,
+  RegisterScreen, } from "../ui/screens";
 
 export const router = createBrowserRouter([
   {
@@ -9,6 +18,10 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <StartScreen />,
+  },
+  {
+    path: "/register",
+    element: <RegisterScreen />,
   },
   {
     path: "/login",

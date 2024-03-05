@@ -1,4 +1,4 @@
-import { ContainerScreen } from "../../components"
+import { ContainerScreen, ButtonPrimary } from "../../components"
 import logo1 from "../../../assets/image/title_1.png"
 import logo2 from "../../../assets/image/title_2.png"
 import whiteScreen from "../../../assets/image/white_screen.png"
@@ -12,10 +12,16 @@ export function StartScreen() {
     const navigate = useNavigate()
     const { playHover, playStart } = useSound();
 
-    function handleStart() {
+    function handleLogin() {
         playStart()
         setStarted(true)
         setTimeout(()=>{navigate("/login")}, 4000 )
+    }
+
+    function handleRegister() {
+        playStart()
+        setStarted(true)
+        setTimeout(()=>{navigate("/register")}, 4000 )
     }
 
 
@@ -27,12 +33,18 @@ export function StartScreen() {
                     <img src={logo2} alt="Logo de Orion" className={started?"shine-animation-started":"shine-animation"} />
                     <img src={logo1} alt="Logo de Orion" className={started?"fadeout-animation":null}/>
                 </div>
-                <label 
-                onClick={handleStart}
+                <button 
+                onClick={handleLogin}
                 onMouseEnter={playHover}
                 className={started?"fadeout-animation":null}
                 >Entrar
-                </label>
+                </button>
+                <button 
+                onClick={handleRegister}
+                onMouseEnter={playHover}
+                className={started?"fadeout-animation":null}
+                >Cadastro
+                </button>
             </div>
         </ContainerScreen>
     )

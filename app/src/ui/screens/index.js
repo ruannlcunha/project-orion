@@ -1,5 +1,6 @@
 export { NotFoundScreen } from "./not-found/not-found.screen"
 export { StartScreen } from "./start/start.screen"
+export { RegisterScreen } from "./register/register.screen"
 export { LoginScreen } from "./login/login.screen"
 export { MenuScreen } from "./menu/menu.screen"
 export { CampaignScreen } from "./campaign/campaign.screen"

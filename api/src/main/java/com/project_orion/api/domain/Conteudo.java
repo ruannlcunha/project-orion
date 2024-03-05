@@ -1,18 +1,13 @@
 package com.project_orion.api.domain;
 
-import com.project_orion.api.domain.enums.CategoriaEnum;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static javax.persistence.EnumType.STRING;
 import static javax.persistence.GenerationType.IDENTITY;
 
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Getter @Setter
 @EqualsAndHashCode(of = "id") @ToString(of = "id")
@@ -24,14 +19,15 @@ public class Conteudo {
 
     private String titulo;
 
-    @Enumerated(STRING)
-    private CategoriaEnum categoria;
-
     private boolean ativo;
 
     @ManyToOne
-    @JoinColumn(name = "biblioteca_id")
-    private Biblioteca biblioteca;
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
+
+    @ManyToOne
+    @JoinColumn(name = "campanha_id")
+    private Campanha campanha;
 
     @OneToMany(mappedBy = "conteudo")
     private List<Imagem> imagens = new ArrayList<>();

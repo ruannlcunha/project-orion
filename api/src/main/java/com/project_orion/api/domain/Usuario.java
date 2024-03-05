@@ -1,10 +1,7 @@
 package com.project_orion.api.domain;
 
 import com.project_orion.api.security.domain.Permissao;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -28,13 +25,23 @@ public class Usuario {
 
     private boolean ativo;
 
+    @OneToMany(mappedBy = "dono")
+    private List<Campanha> campanhasDono = new ArrayList<>();
+
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Permissao> permissoes = new ArrayList<>();
+
+    @OneToMany(mappedBy = "usuario")
+    private List<UsuarioCampanha> usuarioCampanhas = new ArrayList<>();
 
     public void adicionarPermissao(Permissao permissao) {
         this.permissoes.add(permissao);
         permissao.setUsuario(this);
+    }
 
+    public void adicionarUsuarioCampanha(UsuarioCampanha usuarioCampanha) {
+        this.usuarioCampanhas.add(usuarioCampanha);
+        usuarioCampanha.setUsuario(this);
     }
 
 }

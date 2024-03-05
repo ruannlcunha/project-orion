@@ -5,15 +5,13 @@ import com.project_orion.api.controller.request.ConteudoRequest;
 import com.project_orion.api.controller.response.ConteudoResponse;
 import com.project_orion.api.controller.response.SecaoResponse;
 import com.project_orion.api.domain.Conteudo;
-import com.project_orion.api.domain.enums.CategoriaEnum;
 
 public class ConteudoMapper {
 
     public static Conteudo toEntity(ConteudoRequest request) {
-        return Conteudo.builder()
-                .titulo(request.getTitulo())
-                .categoria(CategoriaEnum.valueOf(request.getCategoria()))
-                .build();
+        Conteudo conteudo = new Conteudo();
+        conteudo.setTitulo(request.getTitulo());
+        return conteudo;
     }
 
     public static ConteudoResponse toResponse(Conteudo conteudo,

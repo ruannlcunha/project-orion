@@ -3,7 +3,7 @@ package com.project_orion.api.controller;
 import com.project_orion.api.controller.request.ConteudoRequest;
 import com.project_orion.api.controller.response.ConteudoResponse;
 import com.project_orion.api.service.AdicionarConteudoService;
-import com.project_orion.api.service.ExcluirConteudoService;
+import com.project_orion.api.service.RemoverConteudoService;
 import com.project_orion.api.service.ListarConteudosService;
 import com.project_orion.api.service.VisualizarConteudoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,15 +26,15 @@ public class ConteudoController {
     private VisualizarConteudoService visualizarConteudoService;
 
     @Autowired
-    private ExcluirConteudoService excluirConteudoService;
+    private RemoverConteudoService removerConteudoService;
 
     @Autowired
     private ListarConteudosService listarConteudosService;
 
     @ResponseStatus(CREATED)
     @PostMapping
-    public ConteudoResponse adicionar(@Valid @RequestBody ConteudoRequest request) {
-        return adicionarConteudoService.adicionar(request);
+    public void adicionar(@Valid @RequestBody ConteudoRequest request) {
+        adicionarConteudoService.adicionar(request);
     }
 
     @ResponseStatus(OK)
@@ -45,14 +45,14 @@ public class ConteudoController {
 
     @ResponseStatus(OK)
     @DeleteMapping("/{conteudoId}")
-    public void excluir(@PathVariable Long conteudoId) {
-        excluirConteudoService.excluir(conteudoId);
+    public void remover(@PathVariable Long conteudoId) {
+        removerConteudoService.remover(conteudoId);
     }
 
 
     @GetMapping("/listar")
     public List<ConteudoResponse> listar(@RequestParam(value = "filtro", required = false) String filtro,
-                                         @RequestParam(value = "categoria", required = false) String categoria) {
+                                         @RequestParam(value = "categoria") String categoria) {
         return listarConteudosService.listar(filtro, categoria);
     }
 

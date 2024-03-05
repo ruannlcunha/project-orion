@@ -1,17 +1,14 @@
 package com.project_orion.api.service;
 
 import com.project_orion.api.controller.request.ConteudoRequest;
-import com.project_orion.api.controller.response.ConteudoResponse;
-import com.project_orion.api.controller.response.SecaoResponse;
-import com.project_orion.api.domain.Biblioteca;
-import com.project_orion.api.domain.Conteudo;
-import com.project_orion.api.domain.Imagem;
-import com.project_orion.api.domain.Secao;
+import com.project_orion.api.domain.*;
 import com.project_orion.api.repository.ConteudoRepository;
 import com.project_orion.api.repository.ImagemRepository;
 import com.project_orion.api.repository.SecaoRepository;
-import com.project_orion.api.service.core.BuscarBibliotecaService;
-import com.project_orion.api.util.ConverterSecoes;
+import com.project_orion.api.service.core.BuscarCampanhaService;
+import com.project_orion.api.service.core.BuscarCategoriaService;
+import com.project_orion.api.service.core.RealizarUploadService;
+import com.project_orion.api.service.core.ValidarUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 
 import static com.project_orion.api.mapper.ConteudoMapper.toEntity;
-import static com.project_orion.api.mapper.ConteudoMapper.toResponse;
 
 @Service
 public class AdicionarConteudoService {
@@ -34,32 +30,41 @@ public class AdicionarConteudoService {
     private SecaoRepository secaoRepository;
 
     @Autowired
-    private BuscarBibliotecaService buscarBibliotecaService;
+    private RealizarUploadService realizarUploadService;
+
+    @Autowired
+    private BuscarCampanhaService buscarCampanhaService;
+
+    @Autowired
+    private BuscarCategoriaService buscarCategoriaService;
+
+    @Autowired
+    private ValidarUsuarioService validarUsuarioService;
 
     @Transactional
-    public ConteudoResponse adicionar(ConteudoRequest request) {
-        Biblioteca biblioteca = buscarBibliotecaService.porId(request.getBibliotecaId());
+    public void adicionar(ConteudoRequest request) {
+        Campanha campanha = buscarCampanhaService.porId(request.getCampanhaId());
+        Categoria categoria = buscarCategoriaService.porId(request.getCategoriaId());
+        validarUsuarioService.validarDono(categoria.getCampanha().getDono().getId());
 
         Conteudo conteudo = toEntity(request);
         conteudo.setAtivo(true);
         conteudo.setImagens(new ArrayList<>());
         conteudo.setSecoes(new ArrayList<>());
-        biblioteca.adicionarConteudo(conteudo);
+        categoria.adicionarConteudo(conteudo);
+        campanha.adicionarConteudo(conteudo);
 
         conteudoRepository.save(conteudo);
 
-        adicionarImagens(request,conteudo);
-        adicionarSecoes(request,conteudo);
-
-        SecaoResponse[] secoes = ConverterSecoes.converterPorRequest(request.getSecoes());
-
-        return toResponse(conteudo, secoes, request.getImagens());
+        salvarImagens(request,conteudo);
+        salvarSecoes(request,conteudo);
     }
 
-    private void adicionarImagens(ConteudoRequest request, Conteudo conteudo) {
+    private void salvarImagens(ConteudoRequest request, Conteudo conteudo) {
         for(int i=0;i<request.getImagens().length;i++) {
             Imagem imagem = new Imagem();
-            imagem.setNome(request.getImagens()[i]);
+            String nomeDoArquivo = realizarUploadService.upload(request.getImagens()[i]);
+            imagem.setNome(nomeDoArquivo);
 
             conteudo.adicionarImagem(imagem);
 
@@ -67,7 +72,7 @@ public class AdicionarConteudoService {
         }
     }
 
-    private void adicionarSecoes(ConteudoRequest request, Conteudo conteudo) {
+    private void salvarSecoes(ConteudoRequest request, Conteudo conteudo) {
         for(int i=0;i<request.getSecoes().length;i++) {
             Secao secao = new Secao();
             secao.setTitulo(request.getSecoes()[i].getTitulo());

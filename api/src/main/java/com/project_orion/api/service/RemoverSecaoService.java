@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
-public class ExcluirSecaoService {
+public class RemoverSecaoService {
 
     @Autowired
     private BuscarSecaoService buscarSecaoService;
@@ -19,7 +19,7 @@ public class ExcluirSecaoService {
 
 
     @Transactional
-    public void excluir(Long secaoId) {
+    public void remover(Long secaoId) {
         Secao secao = buscarSecaoService.porId(secaoId);
 
         secao.setAtivo(false);

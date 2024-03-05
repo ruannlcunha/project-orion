@@ -6,9 +6,5 @@ values ('admin@gmail.com.br', 'admin',
 INSERT INTO permissao (funcao, usuario_id) VALUES ('ADMIN', 1);
 INSERT INTO permissao (funcao, usuario_id) VALUES ('USUARIO', 1);
 
-INSERT INTO biblioteca (titulo) VALUES ('O Legado de Orion');
-
-INSERT INTO campanha (titulo) VALUES ('A Guilda de Orion');
-INSERT INTO campanha (titulo) VALUES ('O Segredo de Khaas');
-INSERT INTO campanha (titulo) VALUES ('Grande Primavera');
-INSERT INTO campanha (titulo) VALUES ('Exterminadores de Circinus');
+INSERT INTO campanha (titulo, imagem_fundo, imagem_icone, usuario_id)
+VALUES ('A Guilda de Orion', 'Guilda de Orion Fundo.png', 'Guilda de Orion Icone.png', 1);
