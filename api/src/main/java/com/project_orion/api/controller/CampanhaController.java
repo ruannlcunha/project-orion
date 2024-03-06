@@ -3,7 +3,6 @@ package com.project_orion.api.controller;
 import com.project_orion.api.controller.response.CampanhaResponse;
 import com.project_orion.api.service.InscreverCampanhaService;
 import com.project_orion.api.service.ListarCampanhasInscritasService;
-import com.project_orion.api.service.ListarCategoriasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

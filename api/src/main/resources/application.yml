@@ -8,7 +8,14 @@ spring:
   jpa:
     hibernate:
        ddl-auto: validate
+    database-platform: org.hibernate.dialect.MySQL5Dialect
 server:
+  servlet:
+    session:
+      cookie:
+        http-only: false
+        same-site: none
+        secure: true
   error:
     include-message: always
 logging:

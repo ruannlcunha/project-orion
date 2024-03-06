@@ -6,6 +6,12 @@
     border-right: 3px solid var(--black);
     background-position: center;
     background-size: cover;
+    filter: saturate(0%);
     transition: all 0.2s;
+}
+
+.campaign-screen section .campaign-item:hover {
+    transition: all 0.2s;
+    filter: saturate(100%);
     cursor: pointer;
 }

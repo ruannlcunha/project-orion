@@ -8,8 +8,15 @@ import khaasImage2 from "../../../assets/image/campaign_itens/khaas_hover.png"
 import primaveraImage1 from "../../../assets/image/campaign_itens/primavera.png"
 import primaveraImage2 from "../../../assets/image/campaign_itens/primavera_hover.png"
 import "./campaign.style.css"
+import { useEffect } from "react"
+import { useListarCampanhas } from "../../../hook"
 
 export function CampaignScreen() {
+    const { campanhas, listarCampanhas } = useListarCampanhas()
+
+    useEffect(()=> {
+        listarCampanhas(0)
+    },[])
 
     return (
         <ContainerScreen>
@@ -17,10 +24,15 @@ export function CampaignScreen() {
             <BackButton />
                 <Header title={"Campanhas"} subtitle={"Escolha qual campanha deseja ver"}/>
                 <section>
-                    <CampaignItem campaignId={1} image={allImage1} hoverImage={allImage2}/>
-                    <CampaignItem campaignId={2} image={guildaImage1} hoverImage={guildaImage2}/>
-                    <CampaignItem campaignId={3} image={khaasImage1} hoverImage={khaasImage2}/>
-                    <CampaignItem campaignId={4} image={primaveraImage1} hoverImage={primaveraImage2}/>
+                    {campanhas.content?
+                        campanhas.content.map(campanha=> {
+                            return <CampaignItem
+                            campaignId={campanha.id}
+                            background={campanha.imagemFundo}
+                            icon={campanha.imagemIcone}
+                            />
+                        })
+                    :null}
                 </section>
             </div>
         </ContainerScreen>
