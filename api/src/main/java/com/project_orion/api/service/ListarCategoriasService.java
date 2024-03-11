@@ -26,7 +26,7 @@ public class ListarCategoriasService {
     public List<CategoriaResponse> listar(Long campanhaId) {
         Long usuarioId = usuarioAutenticadoService.getId();
 
-        return categoriaRepository.findAllByCampanhaIdAndAtivo(usuarioId, true)
+        return categoriaRepository.findAllByCampanhaIdAndAtivoOrderByNome(usuarioId, true)
                 .stream()
                 .map(CategoriaMapper::toResponse)
                 .collect(Collectors.toList());

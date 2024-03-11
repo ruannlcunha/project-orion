@@ -27,7 +27,7 @@
 .content-details-right {
     height: 100%;
     width: 50%;
-    background-image: url(../../../assets/image/content/ayla.png);
+    background-color: var(--black-transparent);
     background-position: right;
     background-size: cover;
     display: flex;
@@ -56,25 +56,26 @@
     text-shadow: 3px 3px 3px var(--black);
 }
 
+.content-details-right .content-empty-arrow:hover {
+    background: none;
+    cursor: auto;
+    opacity: 100%;
+}
+
 .content-details-right .content-left-arrow {
-    height: 100%;
-    width: 25%;
-    background-image: url(../../../assets/image/transparent_background.png);
-    background-size: cover;
     background-position: right;
 }
 
 .content-details-right .content-right-arrow {
-    height: 100%;
-    width: 25%;
-    background-image: url(../../../assets/image/transparent_background.png);
-    background-size: cover;
     background-position: left;
 }
 
 .content-details-right div {
+    height: 100%;
+    width: 25%;
+    background-image: url(../../../assets/image/transparent_background.png);
+    background-size: cover;
     transition: all 0.2s;
-    cursor: pointer;
     opacity: 0%;
     display: flex;
     align-items: center;
@@ -90,4 +91,5 @@
     transition: all 0.2s;
     background-image: url(../../../assets/image/transparent_black_background.png);
     opacity: 100%;
+    cursor: pointer;
 }

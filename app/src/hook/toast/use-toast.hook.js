@@ -1,7 +1,9 @@
 import { toast } from 'react-toastify';
 import useGlobalUser from "../../context/global-user.context";
+import { useNavigate } from 'react-router-dom';
 
 export function useToast() {
+    const navigate = useNavigate()
     const [,setUser] = useGlobalUser();
 
     function toastSuccess(message) {
@@ -60,6 +62,7 @@ export function useToast() {
                 theme: "light",
                 });
             setUser(null)
+            navigate("/login")
         }
         
     }

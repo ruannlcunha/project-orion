@@ -1,9 +1,21 @@
 import { useParams } from "react-router-dom"
 import { ContainerScreen, Header, CategoryItem, BackButton} from "../../components"
 import "./category.style.css"
+import { useListarCategorias, useSound } from "../../../hook"
+import { useEffect } from "react"
 
 export function CategoryScreen() {
     const { campaignId } = useParams()
+    const { playHover } = useSound()
+    const { categorias, listarCategorias } = useListarCategorias()
+
+    useEffect(()=>{
+        listarCategorias(campaignId)
+    },[])
+
+    function handleAddCategory() {
+
+    }
 
     return (
         <ContainerScreen>
@@ -11,12 +23,25 @@ export function CategoryScreen() {
                 <Header title={"Categorias"} subtitle={"Escolha qual categoria deseja ver"}/>
                 <BackButton/>
                 <section>
-                    <CategoryItem campaignId={campaignId} categoryId={1} name={"Personagens"}/>
-                    <CategoryItem campaignId={campaignId} categoryId={2} name={"Criaturas"}/>
-                    <CategoryItem campaignId={campaignId} categoryId={3} name={"Itens"}/>
-                    <CategoryItem campaignId={campaignId} categoryId={4} name={"Histórias"}/>
-                    <CategoryItem campaignId={campaignId} categoryId={5} name={"Locais"}/>
-                    <CategoryItem campaignId={campaignId} categoryId={6} name={"Outros"}/>
+                    {categorias?
+                        categorias.map(categoria=> {
+                            return <CategoryItem
+                            campaignId={campaignId}
+                            categoryId={categoria.id}
+                            name={categoria.nome}/>
+                        })
+                    :null}
+
+                    {categorias.length<10?
+                        <>
+                        <button
+                        onMouseEnter={playHover}
+                        onClick={handleAddCategory}
+                        className="category-add-button">
+                            Adicionar Categoria
+                        </button>
+                        </>
+                    :null}
                 </section>
             </div>
         </ContainerScreen>

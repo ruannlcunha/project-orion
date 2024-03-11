@@ -10,7 +10,7 @@ public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
 
     Optional<Categoria> findByIdAndAtivo(Long id, boolean ativo);
 
-    List<Categoria> findAllByCampanhaIdAndAtivo(Long usuarioId, boolean ativo);
+    List<Categoria> findAllByCampanhaIdAndAtivoOrderByNome(Long usuarioId, boolean ativo);
 
     Integer countByCampanhaIdAndAtivo(Long campanhaId, boolean ativo);
 

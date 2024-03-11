@@ -13,12 +13,16 @@ export function CampaignItem({campaignId, background, icon}) {
     }
 
     return (
+        <>
         <button
         onClick={handleClick}
         className="campaign-item"
         style={{backgroundImage: `url(${background})`}}
         >
+            <img src={icon} alt="ícone da campanha" />
         </button>
+        </>
+        
     )
 
 }

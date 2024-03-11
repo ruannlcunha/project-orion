@@ -43,7 +43,7 @@ export function StartScreen() {
                 onClick={handleRegister}
                 onMouseEnter={playHover}
                 className={started?"fadeout-animation":null}
-                >Cadastro
+                >Cadastrar
                 </button>
             </div>
         </ContainerScreen>

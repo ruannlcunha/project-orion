@@ -6,12 +6,29 @@
     border-right: 3px solid var(--black);
     background-position: center;
     background-size: cover;
-    filter: saturate(0%);
+    filter: brightness(100%) saturate(75%);
     transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .campaign-screen section .campaign-item:hover {
     transition: all 0.2s;
-    filter: saturate(100%);
+    filter: brightness(115%) saturate(100%);
     cursor: pointer;
+}
+
+.campaign-screen section .campaign-item img {
+    margin-top: 20px;
+    transition: all 0.2s;
+    width: 95%;
+    max-width: 100%;
+    max-height: 50%;
+}
+
+.campaign-screen section .campaign-item:hover img {
+    width: 100%;
+    transition: all 0.2s;
+    filter: drop-shadow(-2px 2px 10px var(--black) );
 }

@@ -8,11 +8,30 @@
 }
 
 .category-screen section {
-    width: 50%;
-    height: 80%;
+    min-width: 50%;
+    max-width: 80%;
+    min-height: 50%;
+    max-height: 80%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
     flex-direction: row;
     flex-wrap: wrap;
+}
+
+.category-screen section .category-add-button {
+    margin: 0 5px;
+    width: 200px;
+    height: 200px;
+    border: double 5px var(--grey);
+    color: var(--grey);
+    font-size: 22px;
+    font-family: primaryFont, sans-serif;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+
+.category-screen section .category-add-button:hover {
+    transition: all 0.1s;
+    color: var(--terciary);
+    border: double 8px var(--terciary);
 }

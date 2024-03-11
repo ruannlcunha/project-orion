@@ -3,6 +3,7 @@ import HOVER_SOUND from "../../assets/audio/onHover.wav"
 import LOGIN_SOUND from "../../assets/audio/onLogin.wav"
 import CLICK_SOUND from "../../assets/audio/onClick.wav"
 import WRONG_SOUND from "../../assets/audio/onWrong.wav"
+import CHANGE_SOUND from "../../assets/audio/onChange.wav"
 import {Howl} from 'howler';
 
 export function useSound() {
@@ -27,6 +28,10 @@ export function useSound() {
           src: [WRONG_SOUND]
     });
 
+    const changeSound = new Howl({
+          src: [CHANGE_SOUND]
+    });
+
 
     function playHover() {
         hoverSound.play()
@@ -48,6 +53,10 @@ export function useSound() {
         wrongSound.play()
     }
 
-    return { playHover, playStart, playLogin, playClick, playWrong }
+    function playChange() {
+        changeSound.play()
+    }
+
+    return { playHover, playStart, playLogin, playClick, playWrong, playChange }
 
 }

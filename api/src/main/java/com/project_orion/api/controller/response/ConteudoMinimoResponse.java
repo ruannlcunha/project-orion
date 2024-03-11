@@ -7,14 +7,12 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ConteudoResponse {
+public class ConteudoMinimoResponse {
 
     private Long id;
 
     private String titulo;
 
-    private SecaoResponse[] secoes;
-
-    private ImagemResponse[] imagens;
+    private String imagem;
 
 }

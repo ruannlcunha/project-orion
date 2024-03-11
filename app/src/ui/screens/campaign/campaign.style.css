@@ -19,6 +19,5 @@
     flex-wrap: wrap;
     overflow-x: auto;
     align-items: center;
-    background-image: url(../../../assets/image/white_screen.png);
-    background-size: cover;
+    background-color: var(--black-transparent);
 }

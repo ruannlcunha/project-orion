@@ -1,18 +1,21 @@
 
 .category-item {
+    margin: 5px;
     width: 200px;
     height: 200px;
-    background-image: url(../../../assets/image/transparent_black_background.png);
+    background-image: url(../../../assets/image/transparent_background.png);
     background-size: cover;
     background-position: center;
-    border: solid 3px var(--black);
-    font-size: 24px;
+    border: double 4px var(--black);
+    font-size: 22px;
     font-family: primaryFont, sans-serif;
     cursor: pointer;
     transition: all 0.2s;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
 .category-item:hover {
     transition: all 0.2s;
+    color: var(--white);
     background-image: url(../../../assets/image/gradient_background.png);
 }

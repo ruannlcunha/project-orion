@@ -1,6 +1,7 @@
 package com.project_orion.api.controller;
 
 import com.project_orion.api.controller.request.ConteudoRequest;
+import com.project_orion.api.controller.response.ConteudoMinimoResponse;
 import com.project_orion.api.controller.response.ConteudoResponse;
 import com.project_orion.api.service.AdicionarConteudoService;
 import com.project_orion.api.service.RemoverConteudoService;
@@ -49,10 +50,9 @@ public class ConteudoController {
         removerConteudoService.remover(conteudoId);
     }
 
-
-    @GetMapping("/listar")
-    public List<ConteudoResponse> listar(@RequestParam(value = "filtro", required = false) String filtro,
-                                         @RequestParam(value = "categoria") String categoria) {
+    @GetMapping
+    public List<ConteudoMinimoResponse> listar(@RequestParam(value = "filtro", required = false) String filtro,
+                                               @RequestParam(value = "categoria") Long categoria) {
         return listarConteudosService.listar(filtro, categoria);
     }
 

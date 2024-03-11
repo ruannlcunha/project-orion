@@ -7,14 +7,12 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ConteudoResponse {
+public class ImagemResponse {
 
     private Long id;
 
-    private String titulo;
+    private String nome;
 
-    private SecaoResponse[] secoes;
-
-    private ImagemResponse[] imagens;
+    private String dataUri;
 
 }

@@ -9,6 +9,7 @@ import {
   NotFoundScreen,
   ContentDetailsScreen,
   RegisterScreen, } from "../ui/screens";
+import { PrivateRouteUsuario } from "./private-route-usuario.component"
 
 export const router = createBrowserRouter([
   {
@@ -29,22 +30,22 @@ export const router = createBrowserRouter([
   },
   {
     path: "/menu",
-    element: <MenuScreen />,
+    element: <PrivateRouteUsuario Screen={MenuScreen} />,
   },
   {
     path: "/library/campaign",
-    element: <CampaignScreen />,
+    element: <PrivateRouteUsuario Screen={CampaignScreen} />,
   },
   {
     path: "/library/:campaignId/category",
-    element: <CategoryScreen />,
+    element: <PrivateRouteUsuario Screen={CategoryScreen} />,
   },
   {
     path: "/library/:campaignId/category/:categoryId",
-    element: <ContentListScreen />,
+    element: <PrivateRouteUsuario Screen={ContentListScreen} />,
   },
   {
     path: "/library/content/:contentId",
-    element: <ContentDetailsScreen />,
+    element: <PrivateRouteUsuario Screen={ContentDetailsScreen} />,
   },
 ]);
