@@ -1,21 +1,15 @@
-import { ContainerScreen, BackButton, CampaignItem, Header } from "../../components"
-import allImage1 from "../../../assets/image/campaign_itens/all_campaigns.png"
-import allImage2 from "../../../assets/image/campaign_itens/all_campaigns_hover.png"
-import guildaImage1 from "../../../assets/image/campaign_itens/guilda.png"
-import guildaImage2 from "../../../assets/image/campaign_itens/guilda_hover.png"
-import khaasImage1 from "../../../assets/image/campaign_itens/khaas.png"
-import khaasImage2 from "../../../assets/image/campaign_itens/khaas_hover.png"
-import primaveraImage1 from "../../../assets/image/campaign_itens/primavera.png"
-import primaveraImage2 from "../../../assets/image/campaign_itens/primavera_hover.png"
+import { ContainerScreen, BackButton, CampaignItem, Header, Loading, ModalSubscribeCampaign } from "../../components"
 import "./campaign.style.css"
-import { useEffect } from "react"
-import { useListarCampanhas } from "../../../hook"
+import { useEffect, useState } from "react"
+import { useListarCampanhasInscritas, useSound } from "../../../hook"
 
 export function CampaignScreen() {
-    const { campanhas, listarCampanhas } = useListarCampanhas()
+    const { campanhasInscritas, isLoading, listarCampanhasInscritas } = useListarCampanhasInscritas()
+    const [ modalOpen, setModalOpen] = useState(false)
+    const { playHover } = useSound()
 
     useEffect(()=> {
-        listarCampanhas(0)
+        listarCampanhasInscritas(0)
     },[])
 
     return (
@@ -24,8 +18,9 @@ export function CampaignScreen() {
             <BackButton />
                 <Header title={"Campanhas"} subtitle={"Escolha qual campanha deseja ver"}/>
                 <section>
-                    {campanhas.content?
-                        campanhas.content.map(campanha=> {
+                    <Loading isLoading={isLoading}/>
+                    {campanhasInscritas.content?
+                        campanhasInscritas.content.map(campanha=> {
                             return <CampaignItem
                             campaignId={campanha.id}
                             background={campanha.imagemFundo}
@@ -33,6 +28,16 @@ export function CampaignScreen() {
                             />
                         })
                     :null}
+
+                    <button
+                    onMouseEnter={playHover}
+                    onClick={()=>{setModalOpen(true)}}
+                    className="campaign-subscribe">
+                        Inscrever Campanha
+                    </button>
+                    
+                    <ModalSubscribeCampaign isOpen={modalOpen} setIsOpen={setModalOpen}/>
+
                 </section>
             </div>
         </ContainerScreen>

@@ -11,13 +11,36 @@
 
 .campaign-screen section {
     height: 75%;
-    min-width: 75%;
-    border: solid 4px var(--black);
+    width: 75%;
+    border: double 6px var(--black);
     border-radius: 10px;
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    flex-direction: row;
     overflow-x: auto;
     align-items: center;
-    background-color: var(--black-transparent);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.campaign-screen section .campaign-subscribe {
+    height: 95%;
+    min-width: 250px;
+    max-width: 250px;
+    border: none;
+    border: 6px double var(--grey);
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-family: primaryFont, sans-serif;
+    color: var(--grey);
+    margin: 0 5px;
+}
+
+.campaign-screen section .campaign-subscribe:hover {
+    transition: all 0.1s;
+    color: var(--terciary);
+    cursor: pointer;
+    border: double 8px var(--terciary);
 }

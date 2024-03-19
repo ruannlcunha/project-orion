@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { ContainerScreen, BackButton, ButtonPrimary } from "../../components"
+import { ContainerScreen, BackButton, ButtonPrimary, Loading } from "../../components"
 import "./content-list.style.css"
 import { useForm, useListarConteudos, useSound } from "../../../hook"
 import { useNavigate, useParams } from "react-router-dom"
@@ -9,7 +9,7 @@ export function ContentListScreen() {
     const { categoryId } = useParams()
     const navigate = useNavigate()
     const [actualImage, setActualImage] = useState(null)
-    const { conteudos, listarConteudos } = useListarConteudos()
+    const { conteudos, isLoading, listarConteudos } = useListarConteudos()
     const {formData, handleChange} = useForm({
         filter: ""});
 
@@ -43,6 +43,8 @@ export function ContentListScreen() {
                         onChange={handleChange}
                         placeholder="Pesquisar"
                         />
+
+                        <Loading isLoading={isLoading}/>
 
                         {conteudos?
                         <>

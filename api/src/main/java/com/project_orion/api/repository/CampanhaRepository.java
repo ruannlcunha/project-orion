@@ -11,5 +11,7 @@ public interface CampanhaRepository extends JpaRepository<Campanha, Long> {
 
     Optional<Campanha> findByIdAndAtivo(Long id, boolean ativo);
 
+    Page<Campanha> findAllByAtivo(boolean ativo, Pageable pageable);
+
     Page<Campanha> findAllByUsuarioCampanhasUsuarioIdAndAtivo(Long usuarioId, boolean ativo, Pageable pageable);
 }

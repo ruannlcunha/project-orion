@@ -3,6 +3,7 @@ package com.project_orion.api.controller;
 import com.project_orion.api.controller.response.CampanhaResponse;
 import com.project_orion.api.service.InscreverCampanhaService;
 import com.project_orion.api.service.ListarCampanhasInscritasService;
+import com.project_orion.api.service.ListarCampanhasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,14 +16,22 @@ import static org.springframework.http.HttpStatus.CREATED;
 public class CampanhaController {
 
     @Autowired
-    private ListarCampanhasInscritasService listarCampanhasService;
+    private ListarCampanhasService listarCampanhasService;
+
+    @Autowired
+    private ListarCampanhasInscritasService listarCampanhasInscritasService;
 
     @Autowired
     private InscreverCampanhaService inscreverCampanhaService;
 
     @GetMapping
-    public Page<CampanhaResponse> listarCampanhasInscritas(Pageable pageable) {
+    public Page<CampanhaResponse> listarCampanhas(Pageable pageable) {
         return listarCampanhasService.listar(pageable);
+    }
+
+    @GetMapping("/inscritas")
+    public Page<CampanhaResponse> listarCampanhasInscritas(Pageable pageable) {
+        return listarCampanhasInscritasService.listar(pageable);
     }
 
     @ResponseStatus(CREATED)

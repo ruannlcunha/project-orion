@@ -38,6 +38,7 @@ CREATE TABLE usuario_campanha (
 	campanha_id BIGINT NOT NULL,
     cargo VARCHAR(24) NOT NULL,
 	ativo BOOLEAN NOT NULL DEFAULT(true),
+    CONSTRAINT uk_usuario_campanha UNIQUE(usuario_id, campanha_id),
     CONSTRAINT ck_usuario_campanha CHECK (cargo IN('MESTRE','JOGADOR', 'ESPECTADOR')),
     CONSTRAINT fk_usuario_campanha_usuario FOREIGN KEY (usuario_id) REFERENCES usuario(id),
     CONSTRAINT fk_usuario_campanha_campanha FOREIGN KEY (campanha_id) REFERENCES campanha(id)

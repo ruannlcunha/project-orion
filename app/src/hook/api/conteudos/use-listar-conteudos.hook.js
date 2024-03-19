@@ -4,6 +4,7 @@ import { useToast } from "../../toast/use-toast.hook";
 
 export function useListarConteudos() {
     const [conteudos, setConteudos] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
     const { toastError } = useToast();
 
     async function _listarConteudos(filter, categoryId) {
@@ -20,7 +21,10 @@ export function useListarConteudos() {
         } catch (error) {
             toastError(error)
         }
+        finally{
+            setIsLoading(false)
+        }
     }
 
-    return { conteudos, setConteudos, listarConteudos };
+    return { conteudos, isLoading, setConteudos, listarConteudos };
 }

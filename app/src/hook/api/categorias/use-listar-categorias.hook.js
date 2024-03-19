@@ -4,6 +4,7 @@ import { useToast } from "../../toast/use-toast.hook";
 
 export function useListarCategorias() {
     const [categorias, setCategorias] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
     const { toastError } = useToast();
 
     async function _listarCategorias(campaignId) {
@@ -20,7 +21,10 @@ export function useListarCategorias() {
         } catch (error) {
             toastError(error)
         }
+        finally{
+            setIsLoading(false)
+        }
     }
 
-    return { categorias, setCategorias, listarCategorias };
+    return { categorias, isLoading, setCategorias, listarCategorias };
 }

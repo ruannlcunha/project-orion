@@ -1,10 +1,12 @@
 import { toast } from 'react-toastify';
 import useGlobalUser from "../../context/global-user.context";
 import { useNavigate } from 'react-router-dom';
+import { useSound } from '../sound/use-sound.hook';
 
 export function useToast() {
     const navigate = useNavigate()
     const [,setUser] = useGlobalUser();
+    const { playWrong } = useSound()
 
     function toastSuccess(message) {
         toast.success(message , {
@@ -47,6 +49,7 @@ export function useToast() {
                 progress: undefined,
                 theme: "light",
                 });
+                playWrong()
 
             return 
         }
@@ -62,6 +65,7 @@ export function useToast() {
                 theme: "light",
                 });
             setUser(null)
+            playWrong()
             navigate("/login")
         }
         

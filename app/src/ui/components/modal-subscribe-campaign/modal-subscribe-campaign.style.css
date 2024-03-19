@@ -1,0 +1,17 @@
+
+.campaign-screen section .modal div {
+    width: 50%;
+    height: 90%;
+    border: solid var(--black) 3px;
+    background-color: var(--background);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.campaign-screen section .modal div section {
+    width: 90%;
+    border-radius: 0;
+    box-shadow: none;
+}

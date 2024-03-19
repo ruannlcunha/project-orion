@@ -4,6 +4,7 @@ import { useToast } from "../../toast/use-toast.hook";
 
 export function useListarCampanhas() {
     const [campanhas, setCampanhas] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
     const { toastError } = useToast();
 
     async function _listarCampanhas(page) {
@@ -20,7 +21,10 @@ export function useListarCampanhas() {
         } catch (error) {
             toastError(error)
         }
+        finally{
+            setIsLoading(false)
+        }
     }
 
-    return { campanhas, setCampanhas, listarCampanhas };
+    return { campanhas, isLoading, setCampanhas, listarCampanhas };
 }

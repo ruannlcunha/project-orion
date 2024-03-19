@@ -31,7 +31,6 @@ public class RealizarUploadService {
                 throw new ResponseStatusException(BAD_REQUEST, "Houve um problema no upload do arquivo.");
             }
         }catch (IOException e) {
-            e.printStackTrace();
             throw new ResponseStatusException(BAD_REQUEST, "Houve um problema no upload do arquivo.");
         }
 
