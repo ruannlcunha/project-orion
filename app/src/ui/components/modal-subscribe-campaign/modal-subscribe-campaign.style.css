@@ -10,8 +10,40 @@
     flex-direction: column;
 }
 
+.campaign-screen section .modal .loading {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--black-transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .campaign-screen section .modal div section {
     width: 90%;
     border-radius: 0;
     box-shadow: none;
+}
+
+@media screen and (min-width: 320px) and (max-width: 479px) {
+    .campaign-screen section .modal div {
+        width: 95%;
+        height: 75%;
+    }
+
+    .campaign-screen section .modal div .header h1 {
+        font-size: 28px;
+    } 
+
+    .campaign-screen section .modal div .header h3 {
+        margin: 0;
+        text-align: center;
+    } 
+
+    .campaign-screen section .modal div section {
+        height: 80%;
+    }
 }

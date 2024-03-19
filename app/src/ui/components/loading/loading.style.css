@@ -2,7 +2,7 @@
 .loading {
     width: 100vw;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     background-color: var(--black-transparent);
@@ -12,6 +12,6 @@
 }
 
 .loading img {
-    width: 150px;
-    height: 150px;
+    width: 7rem;
+    height: 7rem;
 }

@@ -102,3 +102,47 @@
     height: auto;
     font-size: 24px;
 }
+
+@media screen and (min-width: 320px) and (max-width: 479px) {
+
+    .campaign-screen section .modal div section .subscribe-campaign-item {
+        width: 100%;
+        min-height: 25%;
+        max-height: 25%;
+        max-width: none;
+        margin: 10px 0;
+        border-left: none;
+        border-right: none;
+        border-top: double 5px var(--black);
+        border-bottom: double 5px var(--black);
+        padding: 15px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: self-start;
+    }
+    
+    .campaign-screen section .modal div section .subscribe-campaign-item section{
+        border-left: none;
+        border-right: none;
+        margin: 0;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .campaign-screen section .modal div section .subscribe-campaign-item section img {
+        margin: 0;
+        width: 95%;
+        min-width: 50%;
+        max-width: 50%;
+        max-height: none;
+    }
+    .campaign-screen section .modal div section .subscribe-campaign-item section button {
+        width: auto;
+        height: auto;
+        margin: 0 10px;
+    }
+    
+    .campaign-screen section .modal div section .subscribe-campaign-item .modal div section button {
+        margin: 1rem 0;
+    }
+}

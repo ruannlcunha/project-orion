@@ -54,7 +54,7 @@ export function ContentDetailsScreen() {
                         <img src={rightArrow} alt="Seta para direita" />
                         </div>
                     :<div className="content-empty-arrow"></div>}
-                </section>
+                    </section>
                 :null}
             </div>
         </ContainerScreen>

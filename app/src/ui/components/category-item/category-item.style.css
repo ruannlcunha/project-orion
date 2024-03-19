@@ -19,3 +19,10 @@
     color: var(--white);
     background-image: url(../../../assets/image/gradient_background.png);
 }
+
+@media screen and (min-width: 320px) and (max-width: 479px) {
+    .category-item {
+        width: 90%;
+        height: 5rem;
+    }
+}

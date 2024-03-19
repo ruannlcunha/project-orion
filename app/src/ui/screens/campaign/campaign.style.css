@@ -44,3 +44,32 @@
     cursor: pointer;
     border: double 8px var(--terciary);
 }
+
+@media screen and (min-width: 320px) and (max-width: 479px) {
+    .campaign-screen header h3{
+        font-size: 18px;
+    }
+    
+    .campaign-screen section {
+        width: 85%;
+        border: double 4px;
+        flex-direction: column;
+        align-items: self-start;
+    }
+    
+    .campaign-screen section .campaign-subscribe {
+        margin: 0;
+        width: 100%;
+        max-width: none;
+        min-height: 25%;
+        max-height: 25%;
+    }
+}
+
+@media screen and (min-width: 480px) and (max-width: 1023px) {
+
+}
+
+@media screen and (min-width: 1440px) {
+    
+}

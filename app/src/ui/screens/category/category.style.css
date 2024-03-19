@@ -35,3 +35,23 @@
     color: var(--terciary);
     border: double 8px var(--terciary);
 }
+
+
+@media screen and (min-width: 320px) and (max-width: 479px) {
+    .category-screen header h3{
+        font-size: 18px;
+    }
+
+    .category-screen section{
+        min-width: none;
+        max-width: none;
+        width: 90%;
+        min-height: 50%;
+        max-height: none;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 1rem;
+        text-align: center;
+    }
+}

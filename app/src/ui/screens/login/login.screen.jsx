@@ -4,6 +4,7 @@ import whiteScreen from "../../../assets/image/white_screen.png"
 import orion from "../../../assets/image/orion_1.png"
 import { useNavigate } from "react-router-dom";
 import { useForm, useLogin } from "../../../hook";
+import { THEME_TYPES } from "../../../constants";
 import { useState } from "react";
 
 export function LoginScreen() {
@@ -30,7 +31,7 @@ export function LoginScreen() {
     return (
         <ContainerScreen>
             <div className={"login-fundo"}> 
-            <BackButton />
+            <BackButton theme={THEME_TYPES.LIGHT_THEME}/>
                 <img src={orion} alt="Logo do RollShare" />
                 <section>
                     <h1>Login</h1>

@@ -113,3 +113,117 @@ div .title-orion img {
         filter: brightness(200%);
     }
 }
+
+@media screen and (min-width: 320px) and (max-width: 479px) {
+    
+div .title-orion {
+    height: 20rem;
+    width: 20rem;
+    margin-bottom: 5rem;
+}
+
+div .title-orion img {
+    height: 20rem;
+    width: 20rem;
+    position: absolute;
+}
+
+.start-screen button {
+    font-size: 2.5rem;
+}
+.start-screen {
+    animation: start-move 60s infinite ease-in-out alternate, start-shine 3s infinite ease-in-out alternate;
+}
+
+@keyframes logo-growth {
+    from {
+        filter: brightness(100%);
+        height: 20rem;
+        width: 20rem;
+    }
+    to {
+        height: 24rem;
+        width: 24rem;
+        filter: drop-shadow(-2px 5px 30px yellow);
+        filter: brightness(200%);
+    }
+}
+
+@keyframes start-move {
+    from {
+        background-position: left;
+    }
+    to {
+        background-position: right;
+    }
+}
+
+}
+
+
+@media screen and (min-width: 480px) and (max-width: 1023px) {
+    
+    div .title-orion {
+        height: 320px;
+        width: 320px;
+    }
+    
+    @keyframes logo-growth {
+        from {
+            filter: brightness(100%);
+            height: 320px;
+            width: 320px;
+        }
+        to {
+            height: 360px;
+            width: 360px;
+            filter: drop-shadow(-2px 5px 30px yellow);
+            filter: brightness(200%);
+        }
+    }
+    
+    div .title-orion img {
+        height: 320px;
+        width: 320px;
+        position: absolute;
+    }
+    
+    .start-screen button {
+        font-size: 32px;
+    }
+    
+}
+
+@media screen and (min-width: 1440px) {
+
+    div .title-orion {
+        height: 500px;
+        width: 500px;
+    }
+    
+    @keyframes logo-growth {
+        from {
+            filter: brightness(100%);
+            height: 500px;
+            width: 500px;
+        }
+        to {
+            height: 560px;
+            width: 560px;
+            filter: drop-shadow(-2px 5px 30px yellow);
+            filter: brightness(200%);
+        }
+    }
+    
+    div .title-orion img {
+        height: 500px;
+        width: 500px;
+        position: absolute;
+    }
+    
+    .start-screen button {
+        font-size: 48px;
+        margin-top: 40px;
+    }
+
+}

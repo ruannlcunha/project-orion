@@ -27,17 +27,47 @@
 .menu-screen section {
     width: 100%;
     height: 85%;
+    display: flex;
+
 }
 
 .menu-screen section .menu-left {
     height: 100%;
-    width: 100%;
+    width: 50%;
     display: flex;
     flex-direction: column;
-    padding-top: 75px;
+    padding-top: 3rem;
     align-items: center;
 }
 
 .menu-screen section .menu-left button {
     font-size: 32px;
+}
+
+
+
+@media screen and (min-width: 320px) and (max-width: 479px) {
+
+    .menu-screen {
+        background-position: right;
+    }
+
+    .menu-screen section .menu-left button {
+        width: 85%;
+    }
+    
+    .menu-screen section .menu-left {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 480px) and (max-width: 1023px) {
+    
+    .menu-screen section .menu-left {
+        padding-top: 2rem;
+    }
+
+    .menu-screen section .menu-left button {
+        width: 85%;
+    }
 }

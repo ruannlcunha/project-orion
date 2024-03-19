@@ -49,3 +49,24 @@
     color: var(--white);
     background-image: url(../../../assets/image/back_arrow_white_2.png);
 }
+
+
+@media screen and (min-width: 320px) and (max-width: 1300px) {
+
+    .back-button-black {
+        height: 0;
+        width: 0;
+        font-size: 0;
+        padding: 0;
+    }
+    .back-button-white {
+        height: 0;
+        width: 0;
+        font-size: 0;
+        padding: 0;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    
+}

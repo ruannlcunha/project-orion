@@ -1,10 +1,10 @@
 import { useEffect } from "react"
 import { useListarCampanhas } from "../../../hook"
-import { Header, Modal, SubscribeCampaignItem } from ".."
+import { Header, Loading, Modal, SubscribeCampaignItem } from ".."
 import "./modal-subscribe-campaign.style.css"
 
 export function ModalSubscribeCampaign({isOpen, setIsOpen}) {
-    const { campanhas, listarCampanhas } = useListarCampanhas()
+    const { campanhas, isLoading, listarCampanhas } = useListarCampanhas()
 
     useEffect(()=> {
         isOpen? listarCampanhas() : null
@@ -12,6 +12,7 @@ export function ModalSubscribeCampaign({isOpen, setIsOpen}) {
 
     return (
         <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
+        <Loading isLoading={isLoading}/>
             <div>
                 <Header title={"Inscrever Campanha"} subtitle={"Qual campanha deseja se inscrever?"}/>
                 <section>
